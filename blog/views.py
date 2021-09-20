@@ -8,9 +8,10 @@ def post_list(request):
     posts = (
         Post.objects
             .filter(published_date__lte=timezone.now())
-            .order_by('published_date')
+            .order_by('-published_date')
     )
-    return render(request, 'blog/post_list.html', {"posts": posts})
+    variaveis = {"posts": posts}
+    return render(request, 'blog/post_list.html', variaveis)
 
 # http://127.0.0.1/read/<id>/
 def post_read(request, id):
