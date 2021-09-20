@@ -15,7 +15,8 @@ def post_list(request):
 
 # http://127.0.0.1/read/<id>/
 def post_read(request, id):
-    return HttpResponse(f'mostrando post {id}...')
+    variaveis = {"post": Post.objects.get(id=id)}
+    return render(request, 'blog/post_read.html', variaveis)
 
 # http://127.0.0.1/edit/<id>/
 def post_edit(request, id):
